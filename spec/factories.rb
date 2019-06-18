@@ -12,7 +12,7 @@ FactoryBot.define do
     name { 'T-Shirts' }
   end
 
-  factory :variants do
+  factory :variant do
     association :product
     name { 'Large' }
     cost { 10 }
