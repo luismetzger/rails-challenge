@@ -25,8 +25,8 @@ ActiveRecord::Schema.define(version: 2019_06_18_003723) do
   end
 
   create_table "customer_orders", force: :cascade do |t|
-    t.decimal "total_cost"
-    t.integer "order_status"
+    t.decimal "total_cost", precision: 5, scale: 2
+    t.integer "order_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
