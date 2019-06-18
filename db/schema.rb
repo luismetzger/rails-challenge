@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_215024) do
+ActiveRecord::Schema.define(version: 2019_06_18_003723) do
 
   create_table "collections", force: :cascade do |t|
     t.string "name"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2019_02_27_215024) do
     t.integer "collection_id"
     t.index ["collection_id"], name: "index_collections_products_on_collection_id"
     t.index ["product_id"], name: "index_collections_products_on_product_id"
+  end
+
+  create_table "customer_orders", force: :cascade do |t|
+    t.decimal "total_cost"
+    t.integer "order_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
