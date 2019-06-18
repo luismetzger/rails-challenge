@@ -1,5 +1,5 @@
 class CustomerOrder < ApplicationRecord
-  enum status: {
+  enum order_status: {
       pending: 0,
       processing: 1,
       fulfilled: 2,
