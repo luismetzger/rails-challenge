@@ -6,5 +6,5 @@ class CustomerOrder < ApplicationRecord
       delivered: 3,
       cancelled: 4
   }
-  belongs_to :customer
+  belongs_to :customer, optional: true
 end

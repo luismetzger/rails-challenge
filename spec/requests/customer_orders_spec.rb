@@ -5,27 +5,22 @@ describe 'Customer Orders API', type: :request do
   let!(:variant_1) { FactoryBot.create(:variant) }
   let!(:variant_2) { FactoryBot.create(:variant) }
   let!(:variant_3) { FactoryBot.create(:variant) }
+  let(:variant_ids_array) { [ {
+                                 "variant_id": variant_1.id,
+                                 "variant_quantity": "2"
+                             },
+                             {
+                                 "variant_id": variant_2.id,
+                                 "variant_quantity": "3"
+                             },
+                             {
+                                 "variant_id": variant_3.id,
+                                 "variant_quantity": "4"
+                             } ] }
 
   describe 'POST /api/v1/create_order' do
-    let(:valid_params) {
-                        {
-                          "customer_id": customer.id,
-                          "variant_ids": [
-                                          {
-                                              "variant_id": variant_1.id,
-                                              "variant_quantity": "2"
-                                          },
-                                          {
-                                              "variant_id": variant_2.id,
-                                              "variant_quantity": "3"
-                                          },
-                                          {
-                                              "variant_id": variant_3.id,
-                                              "variant_quantity": "4"
-                                          }
-                                        ]
-                        }
-                      }
+    let(:valid_params) { { "customer_id": customer.id,
+                           "variant_ids": variant_ids_array } }
 
     context 'when the request is valid' do
       before { post '/api/v1/create_order', params: valid_params }
@@ -50,6 +45,14 @@ describe 'Customer Orders API', type: :request do
 
       it 'returns status of 400' do
         expect(JSON.parse(response.body)['status']).to eq(400)
+      end
+    end
+
+    context 'when request cannot find customer_id' do
+      before { post '/api/v1/create_order', params: { "customer_id": "323232", "variant_ids": variant_ids_array } }
+
+      it 'returns status of 404' do
+        expect(JSON.parse(response.body)['status']).to eq(404)
       end
     end
   end
