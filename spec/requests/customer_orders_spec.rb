@@ -48,8 +48,8 @@ describe 'Customer Orders API', type: :request do
     context 'when request has missing params' do
       before { post '/api/v1/create_order', params: { "customer_id": customer.id } }
 
-      it 'returns status of 404' do
-        expect(response).to have_http_status(404)
+      it 'returns status of 400' do
+        expect(JSON.parse(response.body)['status']).to eq(400)
       end
     end
   end

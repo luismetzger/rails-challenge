@@ -1,9 +1,8 @@
 class Api::V1::CustomerOrdersController < ApiController
 
   def create
-    customer = Customer.find_by(id: params[:customer_id])
-
-    if customer.present?
+    if params[:customer_id].present? && params[:variant_ids].present?
+      customer = Customer.find_by(id: params[:customer_id])
       render json: { data: {
                               customer: customer,
                               message: "Order has been created.",
@@ -11,7 +10,7 @@ class Api::V1::CustomerOrdersController < ApiController
                            }
                    }
     else
-      render json: { errors: ["customer_id not present."] }
+      render json: {status: 400, message: "Required parameter is missing"}
     end
   end
 end
