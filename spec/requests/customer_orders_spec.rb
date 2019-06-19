@@ -40,8 +40,16 @@ describe 'Customer Orders API', type: :request do
       end
     end
 
-    context 'when request has missing params' do
+    context 'when request has missing variant_ids param' do
       before { post '/api/v1/create_order', params: { "customer_id": customer.id } }
+
+      it 'returns status of 400' do
+        expect(JSON.parse(response.body)['status']).to eq(400)
+      end
+    end
+
+    context 'when request has missing customer_id param' do
+      before { post '/api/v1/create_order', params: { "variant_ids": variant_ids_array } }
 
       it 'returns status of 400' do
         expect(JSON.parse(response.body)['status']).to eq(400)
