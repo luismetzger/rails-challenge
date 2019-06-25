@@ -22,11 +22,8 @@ class Api::V1::CustomerOrdersController < ApiController
       if variant_record.present?
         old_variant_stock =  variant_record.stock_amount
         if variant[:variant_quantity].to_i > 0 && variant[:variant_quantity].to_i <= variant_record.stock_amount
-          order.total_cost = order.total_cost + variant_record.cost * variant[:variant_quantity].to_i
-          order.save
-          variant_record.stock_amount = variant_record.stock_amount - variant[:variant_quantity].to_i
-          variant_record.save
-
+          order.update(total_cost: order.total_cost + variant_record.cost * variant[:variant_quantity].to_i)
+          variant_record.update(stock_amount: variant_record.stock_amount - variant[:variant_quantity].to_i)
           VariantOrder.create(variant_id: variant[:variant_id], variant_quantity: variant[:variant_quantity], customer_order_id: order.id)
         else
           variant_record.stock_amount = old_variant_stock
