@@ -68,5 +68,4 @@ class Api::V1::CustomerOrdersController < ApiController
         }
     )
   end
-
 end
