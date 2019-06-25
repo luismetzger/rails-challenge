@@ -28,7 +28,7 @@ describe 'Customer Orders API', type: :request do
       it 'creates new order' do
         expect(valid_params[:customer_id]).to eq(customer.id)
         expect(valid_params[:variant_ids][0][:variant_id]).to eq(variant_1.id)
-        expect(valid_params[:variant_ids][0][:variant_quantity]).to eq(2)
+        expect(valid_params[:variant_ids][0][:variant_quantity]).to eq(1)
         expect(valid_params[:variant_ids][1][:variant_id]).to eq(variant_2.id)
         expect(valid_params[:variant_ids][1][:variant_quantity]).to eq(3)
         expect(valid_params[:variant_ids][2][:variant_id]).to eq(variant_3.id)
