@@ -7,6 +7,7 @@ class CustomerOrder < ApplicationRecord
       cancelled: 4
   }
   belongs_to :customer
+  has_many :variant_orders
 
   validates_presence_of :customer_id, :total_cost
 end

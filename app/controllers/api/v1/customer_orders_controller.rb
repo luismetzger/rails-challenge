@@ -1,4 +1,14 @@
 class Api::V1::CustomerOrdersController < ApiController
+  before_action :find_order, only: :show
+
+  def show
+    if @order.present?
+      render json: order_response(@order)
+    else
+      render json: { status: 400, message: "Order not found." }
+    end
+  end
+
   def create
     check_required_params(params)
     customer = Customer.find_by_id(params[:customer_id])
@@ -35,4 +45,25 @@ class Api::V1::CustomerOrdersController < ApiController
 
     render json: {status: 200, message: "Order created successfully"}
   end
+
+  def find_order
+    @order = CustomerOrder.find_by_id(params[:id])
+  end
+
+  def order_response(order)
+    order.to_json(
+        only:    [:id, :user_id, :order_status, :total_cost, :created_at, :updated_at],
+        include: {
+            variant_orders:       {
+                only:    [:variant_id, :variant_quantity],
+                include: {
+                    variant: {
+                        only: [:id, :name, :cost]
+                    }
+                }
+            }
+        }
+    )
+  end
+
 end
