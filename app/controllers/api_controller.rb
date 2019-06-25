@@ -5,25 +5,11 @@ class ApiController < ApplicationController
   class MissingParameter < StandardError
   end
 
-  class RecordNotFound < StandardError
-  end
-
-  class OutOfStock < StandardError
-  end
-
   class RequiredParameters < StandardError
   end
 
   rescue_from MissingParameter do |exception|
     render json: {status: 400, message: 'Parameter is missing' }
-  end
-
-  rescue_from RecordNotFound do |exception|
-    render json: {status: 400, message: 'variant is invalid' }
-  end
-
-  rescue_from OutOfStock do |exception|
-    render json: { status: 422, message: 'Not enough stock for one of the variants' }
   end
 
   rescue_from RequiredParameters do |exception|
@@ -41,14 +27,6 @@ class ApiController < ApplicationController
       raise MissingParameter
     else
       false
-    end
-  end
-
-  def variant_record_exists?(param)
-    if param.present?
-      @variant_record = Variant.find(param)
-    else
-      raise RecordNotFound
     end
   end
 
