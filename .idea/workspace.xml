@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b8ecab29-ef15-470d-b01d-ac2fa3a92e9e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/api/v1/customer_orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/api/v1/customer_orders_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/customer_order.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/customer_order.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/variant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/variant.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -29,8 +25,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/customer_orders_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="903">
-                  <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+                <state relative-caret-position="168">
+                  <caret line="8" column="63" lean-forward="true" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
                 </state>
               </provider>
             </entry>
@@ -338,22 +334,21 @@
       <option name="presentableId" value="Default" />
       <updated>1560816759934</updated>
       <workItem from="1560816761895" duration="45145000" />
-      <workItem from="1561141645954" duration="14619000" />
+      <workItem from="1561141645954" duration="14942000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59764000" />
+    <option name="totallyTimeSpent" value="60087000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2475" y="-249" width="2475" height="1405" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.15889393" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.15889393" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Floobits" order="0" />
-      <window_info anchor="bottom" id="Terminal" order="1" weight="0.39954337" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="1" visible="true" weight="0.39954337" />
       <window_info anchor="bottom" id="Database Changes" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="4" />
@@ -570,8 +565,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/api/v1/customer_orders_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="168">
+          <caret line="8" column="63" lean-forward="true" selection-start-line="8" selection-start-column="63" selection-end-line="8" selection-end-column="63" />
         </state>
       </provider>
     </entry>

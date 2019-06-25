@@ -1,4 +1,5 @@
 class Api::V1::CustomerOrdersController < ApiController
+  before_action :find_customer, only: :create
   before_action :find_order, only: :show
 
   def show
@@ -11,9 +12,7 @@ class Api::V1::CustomerOrdersController < ApiController
 
   def create
     check_required_params(params)
-    customer = Customer.find_by_id(params[:customer_id])
-
-    if customer.present?
+    if @customer.present?
       order = CustomerOrder.create(customer_id: params[:customer_id], total_cost: 0)
       variants = params[:variant_ids]
       order_variants(order, variants)
@@ -23,6 +22,10 @@ class Api::V1::CustomerOrdersController < ApiController
   end
 
   private
+
+  def find_customer
+    @customer = Customer.find_by_id(params[:customer_id])
+  end
 
   def order_variants(order, variants)
     variants.each do |variant|
