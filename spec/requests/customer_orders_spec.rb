@@ -7,15 +7,15 @@ describe 'Customer Orders API', type: :request do
   let!(:variant_3) { FactoryBot.create(:variant) }
   let(:variant_ids_array) { [ {
                                  "variant_id": variant_1.id,
-                                 "variant_quantity": "2"
+                                 "variant_quantity": 1
                              },
                              {
                                  "variant_id": variant_2.id,
-                                 "variant_quantity": "3"
+                                 "variant_quantity": 3
                              },
                              {
                                  "variant_id": variant_3.id,
-                                 "variant_quantity": "4"
+                                 "variant_quantity": 4
                              } ] }
 
   describe 'POST /api/v1/create_order' do
@@ -28,11 +28,11 @@ describe 'Customer Orders API', type: :request do
       it 'creates new order' do
         expect(valid_params[:customer_id]).to eq(customer.id)
         expect(valid_params[:variant_ids][0][:variant_id]).to eq(variant_1.id)
-        expect(valid_params[:variant_ids][0][:variant_quantity]).to eq("2")
+        expect(valid_params[:variant_ids][0][:variant_quantity]).to eq(2)
         expect(valid_params[:variant_ids][1][:variant_id]).to eq(variant_2.id)
-        expect(valid_params[:variant_ids][1][:variant_quantity]).to eq("3")
+        expect(valid_params[:variant_ids][1][:variant_quantity]).to eq(3)
         expect(valid_params[:variant_ids][2][:variant_id]).to eq(variant_3.id)
-        expect(valid_params[:variant_ids][2][:variant_quantity]).to eq("4")
+        expect(valid_params[:variant_ids][2][:variant_quantity]).to eq(4)
       end
 
       it 'returns status of 200' do
@@ -57,7 +57,7 @@ describe 'Customer Orders API', type: :request do
     end
 
     context 'when request cannot find customer_id' do
-      before { post '/api/v1/create_order', params: { "customer_id": "323232", "variant_ids": variant_ids_array } }
+      before { post '/api/v1/create_order', params: { "customer_id": 2, "variant_ids": variant_ids_array } }
 
       it 'returns status of 404' do
         expect(JSON.parse(response.body)['status']).to eq(404)

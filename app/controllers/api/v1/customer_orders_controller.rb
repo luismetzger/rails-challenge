@@ -9,7 +9,7 @@ class Api::V1::CustomerOrdersController < ApiController
       variants = params[:variant_ids]
       order_variants(order, variants)
     else
-      render json: {status: "error", code: 404, message: "id: #{params[:customer_id]} is an invalid customer_id"}
+      render json: {status: 404, message: "id: #{params[:customer_id]} is an invalid customer_id"}
     end
   end
 
@@ -31,15 +31,15 @@ class Api::V1::CustomerOrdersController < ApiController
         else
           variant_record.stock_amount = old_variant_stock
           variant_record.save
-          render json: {status: "error", code: 422, message: "Not enough stock for variant_id #{variant[:variant_id]}"}
+          render json: {status: 422, message: "Not enough stock for variant_id #{variant[:variant_id]}"}
           return
         end
       else
-        render json: {status: "error", code: 404, message: "variant_id: #{variant[:variant_id]} is invalid"}
+        render json: {status: 404, message: "variant_id: #{variant[:variant_id]} is invalid"}
         return
       end
     end
 
-    render json: {status: "success", code: 200, message: "Order created successfully"}
+    render json: {status: 200, message: "Order created successfully"}
   end
 end
